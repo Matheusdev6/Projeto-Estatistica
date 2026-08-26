@@ -1,5 +1,7 @@
-import teste
+from fastapi import FastAPI
 
-exemplo = teste.Teste(3,4,5)
+app = FastAPI()
 
-exemplo.printTeste()
+@app.get("/fastapitest")
+def read_root():
+    return {"message":"Hello, FastAPI!"}
