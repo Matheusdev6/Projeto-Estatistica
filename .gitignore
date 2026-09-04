@@ -1,7 +1,8 @@
 src/__pycache__/
 
 #env
-venv/
+myvenv/
+.env
 
 #vscode
 .vscode
