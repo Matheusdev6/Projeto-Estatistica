@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Getter
 @Entity
-@Table(name = "investimentos_direto")
+@Table(name = "investimento_direto")
 public class Investimentos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
