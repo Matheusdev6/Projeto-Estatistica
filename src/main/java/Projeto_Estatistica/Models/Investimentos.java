@@ -2,6 +2,7 @@ package Projeto_Estatistica.Models;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -13,7 +14,7 @@ public class Investimentos {
     private Long id;
 
     @Column(name = "data",nullable = false)
-    private Date data;
+    private LocalDate data;
 
     @Column(name = "valor",nullable = false)
     private Double valor;

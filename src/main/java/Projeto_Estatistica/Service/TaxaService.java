@@ -5,6 +5,7 @@ import Projeto_Estatistica.DTOs.ResponseTaxaDTO;
 import Projeto_Estatistica.Exceptions.DadosException;
 import Projeto_Estatistica.Models.Taxa;
 import Projeto_Estatistica.Repository.TaxaRepository;
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class TaxaService {
       grande na função principal do endpoint
     */
 
-    public ResponseTaxaDTO calculos(List<Taxa> lista){
+    public ResponseTaxaDTO calculos(@NonNull List<Taxa> lista){
         ResponseTaxaDTO responseTaxaDTO = new ResponseTaxaDTO();
         int size = lista.size();
         Double mediana;
@@ -57,12 +58,12 @@ public class TaxaService {
         return responseTaxaDTO;
     }
 
-    public ResponseTaxaDTO calculosTaxa(RequestDTO requestDTO){
+    public ResponseTaxaDTO calculosTaxa(@NonNull RequestDTO requestDTO){
 
         LocalDate inicio = LocalDate.parse(requestDTO.getFrom());
         LocalDate fim = LocalDate.parse(requestDTO.getTo());
 
-        List<Taxa> dados = taxaRepository.selectTaxas(inicio,fim)
+        List<Taxa> dados = taxaRepository.findByDataBetweenOrderByValor(inicio,fim)
                 .orElseThrow(()->new DadosException("Erro ao manipular os dados."));
 
         return calculos(dados);
